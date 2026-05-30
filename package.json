@@ -1,0 +1,28 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "complete nodejs guide",
+  "homepage": "https://github.com/Vishal51206/node-js-apps#readme",
+  "bugs": {
+    "url": "https://github.com/Vishal51206/node-js-apps/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vishal51206/node-js-apps.git"
+  },
+  "license": "ISC",
+  "author": "Vishal",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "express": "^5.2.1"
+  }
+}

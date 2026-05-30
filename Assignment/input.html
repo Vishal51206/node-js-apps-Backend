@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <header>This is my first HTML</header>
+    <label for="username">Username:</label>
+    <input id="text">
+    <label for="password">Password:</label>
+    <input id="pass">
+    <button onclick="Click()">Submit</button>
+    <p id="response"></p>
+    <script>
+    function Click(){
+        let pass=document.getElementById("pass").value;
+        if(pass==1234){
+            document.getElementById("response").innerHTML="CorrectPassword";
+        }else{
+            document.getElementById("response").innerHTML="WrongPassword";
+        }
+    }
+    </script>
+</body>
+</html>
