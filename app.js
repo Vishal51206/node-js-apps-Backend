@@ -11,7 +11,7 @@ const shopRouter = require('./routes/shop');
 const parsebody = require('body-parser'); //it helps to collect the request chunks entered by user
 app.use(parsebody.urlencoded()); // it encodes the rawbytes into readable strings
 
-app.use('/admin',adminRouter.router); // here the '/admin' adds prefix to the routs in admin ex: admin/choose-product ,so you don't repeat it in every route individually. now you can access /choose-product by doing /admin/choose-product. it adss prefix automatically for routes.
+app.use('/admin',adminRouter); // here the '/admin' adds prefix to the routs in admin ex: admin/choose-product ,so you don't repeat it in every route individually. now you can access /choose-product by doing /admin/choose-product. it adss prefix automatically for routes.
 
 app.use('/shop',shopRouter);
 
