@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add-Product</title>
+<%- include('includes/head.ejs') %>      <%# It includes the file from includes folder and head file ,It reduces the size of code and gies us chance to reuse the code by including method %>
 </head>
 <header><nav><ul>
     <li><a href = "/">Shop</a></li>
@@ -13,7 +8,6 @@
 <body>
     <main>
         <form action = "/admin/product" method = "POST">
-            <label for="product">Enter Product</label>
             <input type = "text" name = "product"></input>
             <button type = "submit">Submit</button>
         </form>

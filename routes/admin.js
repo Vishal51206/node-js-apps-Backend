@@ -8,7 +8,7 @@ const products = [];
 
 router.get('/choose-product',(req,res,next)=>{
     //res.sendFile(path.join(__dirname,'../','views','add-product.html')); //IMP.... //res.sendFile(path.join(__dirname, '../', 'views', 'add-product.html')); sendFile: sends html file as response | path.join: joins all parts into one clean path | __dirname: current file's folder location | '../': go one folder back | 'views': enter views folder | 'add-product.html': the file to send
-    res.render('add-product');
+    res.render('add-product',{Titlename : "Add-Product"});
 });
 
 router.post('/product',(req,res,next)=>{

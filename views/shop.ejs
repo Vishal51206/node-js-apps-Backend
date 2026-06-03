@@ -1,0 +1,21 @@
+<%- include('includes/head.ejs') %>  <%# It includes the file from includes folder and head file ,It reduces the size of code and gies us chance to reuse the code by including method %>
+</head>
+<header><nav><ul>
+    <li><a href = "/shop">Shop</a></li>
+    <li><a href = "/admin/choose-product">choose-product</a></li>
+
+</ul></nav></header>
+<body>
+    <main>
+        <% if(prods.length > 0) {%>
+            <h1>Products</h1>
+            <h1>List of All products...</h1>
+            <% for (let i=0 ; i<prods.length ; i++){ %>
+                <h1><%= prods[i].title %></h1>
+            <% } %>
+            <% } else { %>
+                <h1>No Products Found</h1>
+                <% } %>
+    </main>
+</body>
+</html>

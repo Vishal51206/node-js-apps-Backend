@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 
 const path = require('path');
 const port = 4000;
@@ -7,7 +8,6 @@ const adminRouter = require('./routes/admin');
 
 const shopRouter = require('./routes/shop');
 
-const app = express();
 const parsebody = require('body-parser'); //it helps to collect the request chunks entered by user
 app.use(parsebody.urlencoded()); // it encodes the rawbytes into readable strings
 
@@ -17,10 +17,10 @@ app.use('/shop',shopRouter);
 
 console.log(adminRouter.products);
 
-app.set('view engine','pug'); //sets default view engine as pug so that we dont need to specify res.render(shop.pug) instead we can write as res.render(shop), cause it automatically knows which view engine to be used default after we setting it to default.
+app.set('view engine','ejs'); //sets default view engine as pug so that we dont need to specify res.render(shop.pug) instead we can write as res.render(shop), cause it automatically knows which view engine to be used default after we setting it to default.
 
 app.use((req,res,next)=>{
-    res.status(404).sendFile(path.join(__dirname,'views','404.html'));
+    res.status(404).render('404',{Titlename:"Page Not Found"}); //did using ejs
 });
 
 app.listen(port);
