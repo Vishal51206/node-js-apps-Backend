@@ -12,6 +12,14 @@ exports.postProductAdded = (req,res,next)=>{
     res.redirect('/shop');                             // it redirects from one page to other page
 }
 
+exports.productId = (req,res,next) => {
+    const prodId = req.params.productId;              // by the help of params we can access the url variables.
+    Product.findById(prodId, product =>{              //using function from model
+        console.log(product);
+    });
+    res.redirect('/');
+} 
+
 exports.productlist = (req,res,next)=>{
     Product.fetchAll((products) => {
          res.render('shop',{prods:products,Titlename :"Shop"});

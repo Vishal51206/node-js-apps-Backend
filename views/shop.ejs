@@ -12,6 +12,7 @@
             <h1>List of All products...</h1>
             <% for (let i=0 ; i<prods.length ; i++){ %>
                 <h1><%= prods[i].title %></h1>
+                <a href="/product/<%= prods[i].id %>"><%= prods[i].title %>Details</a>
             <% } %>
             <% } else { %>
                 <h1>No Products Found</h1>
