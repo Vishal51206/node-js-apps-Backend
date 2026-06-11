@@ -12,7 +12,11 @@
             <h1>List of All products...</h1>
             <% for (let i=0 ; i<prods.length ; i++){ %>
                 <h1><%= prods[i].title %></h1>
-                <a href="/product/<%= prods[i].id %>"><%= prods[i].title %>Details</a>
+                <a href="/product/<%= prods[i].id %>"><%= prods[i].title %>Details</a>  
+                <h3>Price :<%= prods[i].price %></h3>
+                 <form action="/cart" method = "POST"><button type="submit">Add To Cart</button>
+    <input type="hidden" name="productId" value="<%= prods[i].id %>"></input>    <!--here we are sending the data from one page to other page-->
+    </form>
             <% } %>
             <% } else { %>
                 <h1>No Products Found</h1>

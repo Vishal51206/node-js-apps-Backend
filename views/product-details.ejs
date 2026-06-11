@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= Titlename %></title>
+</head>
+<body>
+    <h1><%= Titlename %></h1>
+    <h2><%= prods.title %></h2>
+    <h2>Good Product</h2>
+    <h2><%= prods.price %></h2>
+    <form action="/cart" method = "POST"><button type="submit">Add To Cart</button>
+    <input type="hidden" name="productId" value="<%= prods.id %>"></input>    <!--here we are sending the data from one page to other page-->
+    </form>
+</body>
+</html>

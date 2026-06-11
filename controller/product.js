@@ -1,5 +1,5 @@
 const Product = require('../models/product');          //importing the Product class from the models
-
+const Cart = require('../models/cart');
 
 exports.getProductAdd = (req,res,next)=>{
     res.render('add-product',{Titlename : "Add-Product"});
@@ -15,10 +15,18 @@ exports.postProductAdded = (req,res,next)=>{
 exports.productId = (req,res,next) => {
     const prodId = req.params.productId;              // by the help of params we can access the url variables.
     Product.findById(prodId, product =>{              //using function from model
-        console.log(product);
+        console.log("product found for details:", product);
+        res.render('product-details',{prods:product,Titlename:"Another Product"});
     });
-    res.redirect('/');
 } 
+
+exports.postCart = (req,res,next) =>{
+    const productId = req.body.productId;
+    Product.findById(productId, (product) =>{
+        Cart.addProduct(productId,product.price);
+        res.redirect('/cart');  //it redirects to 'GET' type.
+    });
+}
 
 exports.productlist = (req,res,next)=>{
     Product.fetchAll((products) => {

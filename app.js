@@ -19,6 +19,8 @@ app.use('/shop',shopRouter);
 
 app.get('/product/:productId',controller.productId);      //we can declare url variable by stating with ':'.
 
+app.post('/cart',controller.postCart);
+
 console.log(adminRouter.products);
 
 app.set('view engine','ejs'); //sets default view engine as pug so that we dont need to specify res.render(shop.pug) instead we can write as res.render(shop), cause it automatically knows which view engine to be used default after we setting it to default.

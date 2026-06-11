@@ -17,6 +17,12 @@ const getProductsFromFile = cb => {
     });
 };
 
+const randInt = (min,max) =>{
+    return Math.floor(Math.random() * (max-min +1)) + min; // gives a random integer.
+}
+const min = randInt(1000,5000);
+const max = randInt(min, 100000);
+
 module.exports= class  product {
 
     constructor(title){
@@ -25,6 +31,8 @@ module.exports= class  product {
 
     save(){
         this.id = Math.random().toString();
+        this.price = randInt(min,max);
+        console.log(this.price);
         const p = path.join(
         path.dirname(process.mainModule.filename),
             'data',
@@ -36,7 +44,7 @@ module.exports= class  product {
                 products = JSON.parse(filecontent);   //retriving all the existing values
             }
             products.push(this);                      //adding new value to old values
-            fs.writeFile(p,JSON.stringify(products),(err)=>{
+            fs.writeFile(p,JSON.stringify(products),(err)=>{  
                 console.log(err);
             });
         });
@@ -57,7 +65,7 @@ module.exports= class  product {
 
    static findById(id, cb){
     getProductsFromFile(products =>{
-        const product = products.find((p) => p.id === id);
+        const product = products.find((p) => p.id === id);  //it taverse through the data and finds the element
         cb(product);
     });
    }
