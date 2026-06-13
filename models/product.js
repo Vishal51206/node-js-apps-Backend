@@ -2,12 +2,14 @@ const path = require('path');
 const fs = require('fs');
 const { json } = require('body-parser');
 
+const db = require('../util/database');
+
+const p = path.join(
+    path.dirname(process.mainModule.filename),
+    'data',
+    'products.json'
+);
 const getProductsFromFile = cb => {
-    const p = path.join(
-        path.dirname(process.mainModule.filename),
-        'data',
-        'products.json'
-    );
     fs.readFile(p,(err, filecontent) =>{
         if(err){
             cb([]);
@@ -25,49 +27,34 @@ const max = randInt(min, 100000);
 
 module.exports= class  product {
 
-    constructor(title){
+    constructor(id,title){
+        this.id = id;
         this.title = title;
     }
 
     save(){
-        this.id = Math.random().toString();
-        this.price = randInt(min,max);
-        console.log(this.price);
-        const p = path.join(
-        path.dirname(process.mainModule.filename),
-            'data',
-            'products.json'
-        );
-        fs.readFile(p, (err,filecontent) => {
-            let products = [];
-            if(!err) {
-                products = JSON.parse(filecontent);   //retriving all the existing values
-            }
-            products.push(this);                      //adding new value to old values
-            fs.writeFile(p,JSON.stringify(products),(err)=>{  
-                console.log(err);
-            });
-        });
-    }
-    static fetchAll(cb){     //called by class name not by object name cause its static.
-        const p = path.join(
-        path.dirname(process.mainModule.filename),
-            'data',
-            'products.json'
-        );
-        fs.readFile(p, (err, filecontent) => {
-            if(err){
-                 cb([]);
-            }
-            cb(JSON.parse(filecontent));
-        });
+    this.price = randInt(
+        randInt(1000,5000),
+        100000
+    );
+
+    return db.execute(
+        'INSERT INTO products (id,title, price) VALUES (?,?,?)',
+        [this.id,this.title, this.price]
+    );
+}
+
+    static deleteById(id){
+        return db.execute('delete from products where products.id = ?',[id]);
     }
 
-   static findById(id, cb){
-    getProductsFromFile(products =>{
-        const product = products.find((p) => p.id === id);  //it taverse through the data and finds the element
-        cb(product);
-    });
+
+    static fetchAll(){     //called by class name not by object name cause its static.
+       return db.execute('SELECT * from products');
+    }
+
+   static findById(id){
+    return db.execute('select * from products where products.id = ?',[id]);
    }
 
     

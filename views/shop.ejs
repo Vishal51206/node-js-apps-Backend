@@ -2,7 +2,7 @@
 </head>
 <header><nav><ul>
     <li><a href = "/shop">Shop</a></li>
-    <li><a href = "/admin/choose-product">choose-product</a></li>
+    <li><a href = "/admin/choose-product">add-product</a></li>
 
 </ul></nav></header>
 <body>
@@ -14,6 +14,7 @@
                 <h1><%= prods[i].title %></h1>
                 <a href="/product/<%= prods[i].id %>"><%= prods[i].title %>Details</a>  
                 <h3>Price :<%= prods[i].price %></h3>
+                <form action="/deleteproduct" method="post"><input type="hidden" name = "productId" value=<%= prods[i].id %>><button type="submit">Delete Product</button></form>
                  <form action="/cart" method = "POST"><button type="submit">Add To Cart</button>
     <input type="hidden" name="productId" value="<%= prods[i].id %>"></input>    <!--here we are sending the data from one page to other page-->
     </form>

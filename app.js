@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('./util/database');
 const app = express();
 
 const path = require('path');
@@ -20,6 +21,16 @@ app.use('/shop',shopRouter);
 app.get('/product/:productId',controller.productId);      //we can declare url variable by stating with ':'.
 
 app.post('/cart',controller.postCart);
+
+app.get('/cart',controller.addedToCart);
+
+app.post('/deleteproduct',controller.postDeleteProduct);
+
+app.post('/deletecart',controller.postDeleteCart);
+
+db.execute('SELECT * FROM products')
+.then(result =>{ console.log(result)})
+.catch(err =>{console.log(err)});
 
 console.log(adminRouter.products);
 

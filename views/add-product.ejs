@@ -2,13 +2,14 @@
 </head>
 <header><nav><ul>
     <li><a href = "/">Shop</a></li>
-    <li><a href = "choose-product">choose-product</a></li>
+    <li><a href = "choose-product">Add-product</a></li>
 
 </ul></nav></header>
 <body>
     <main>
         <form action = "/admin/product" method = "POST">
             <input type = "text" name = "product"></input>
+            <label>ID: </label><input type="text" name ="id"></input>
             <button type = "submit">Submit</button>
         </form>
     </main>

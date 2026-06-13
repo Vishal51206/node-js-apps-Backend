@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+</head>
+<body>
+    <h1>Your Cart Products</h1>
+    <% for(let i=0;i<cart.length;i++){ %>
+        <h2><%= cart[i].title  %></h2>
+        <form action="/deletecart" method="post"><input type="hidden" name="productId" value= <%= cart[i].id %>></input><button type="submit">Remove from cart</button></form>
+    <% } %>
+    <h2>Total :<%= Totalprice %></h2>
+    <h1><a href="/shop">Shop More Products</a></h1>
+</body>
+</html>
